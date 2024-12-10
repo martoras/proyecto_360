@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <title>Proyecto 360º</title>
 </head>
 <body>
-    <iframe src="https://skybox.blockadelabs.com/e/035a339b002ebe46ba546c6032462a53" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>
+
+    <div  class="boton-derecha">
+        <button class="boton-next">🡲</button>
+    </div>
+
+    <div  class="boton-izquierda">
+        <button class="boton-next">🡰</button>
+    </div>
+
+    <div class="div2">
+        <a-scene class="escena">
+            <a-sky src="image.jpg" rotation="0 -130 0"></a-sky>
+        </a-scene>
+    </div>
 </body>
 </html>
