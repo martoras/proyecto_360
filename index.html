@@ -8,6 +8,22 @@
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <title>Proyecto 360º</title>
+    <script>
+        AFRAME.registerComponent('scene-switcher', {
+          schema: {
+            images: {type: 'array', default: ['escena-1.JPG', 'escena-2.JPG', 'escena-3.JPG', 'escena-4.JPG', 'escena-5.JPG', 'escena-6.JPG', 'escena-7.JPG', 'escena-8.JPG', 'escena-9.JPG']}
+          },
+          init: function () {
+            this.currentIndex = 0; // Inicializa el índice de la imagen actual
+            this.el.addEventListener('abuttondown', this.switchScene.bind(this));
+          },
+          switchScene: function () {
+            this.currentIndex = (this.currentIndex + 1) % this.data.images.length; // Calcula el siguiente índice de forma cíclica
+            var sky = document.querySelector('a-sky'); // Encuentra el elemento a-sky
+            sky.setAttribute('src', this.data.images[this.currentIndex]); // Cambia la imagen del fondo
+          }
+        });
+      </script>
 </head>
 <body>
 
@@ -21,7 +37,9 @@
 
     <div class="div2">
         <a-scene class="escena">
-            <a-sky src="image.jpg" rotation="0 -130 0"></a-sky>
+            <a-entity oculus-touch-controls="hand: right" scene-switcher></a-entity>
+
+            <a-sky src="escena-2.JPG" rotation="0 -130 0"></a-sky>
         </a-scene>
     </div>
 </body>
